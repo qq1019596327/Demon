@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mMenuMotionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/res_colorPrimary"
+        tools:context=".bossBar.BossBarActivity">
+
+
+    <com.gongziyi.demon.bossBar.BossBarView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/layoutBarView"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            app:offset_header="26dp"
+            app:bezier_outer="26dp"
+            app:bezier_inner="26dp"
+            app:bezier_radius="45dp"
+            android:elevation="10dp"
+    />
+
+
+    <TextView
+            android:elevation="10dp"
+            android:id="@+id/mMenuCityText"
+            android:text="1111111111111"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mMenuOverviewText"
+            style="@style/BossBarText"/>
+
+    <TextView
+            android:elevation="10dp"
+            android:id="@+id/mMenuOverviewText"
+            android:text="1111111111111"
+            style="@style/BossBarText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mMenuCityText"
+            app:layout_constraintEnd_toStartOf="@+id/mMenuTopText"
+    />
+
+    <TextView
+            android:elevation="10dp"
+            android:id="@+id/mMenuTopText"
+            android:text="1111111111111"
+            style="@style/BossBarText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mMenuOverviewText"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:elevation="10dp"
+            android:id="@+id/mMenuCityIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/mMenuCityText"
+            app:layout_constraintEnd_toEndOf="@id/mMenuCityText"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="boss_city_icon.json"
+            app:lottie_loop="false"/>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:elevation="10dp"
+            android:id="@+id/mMenuOverviewIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/mMenuOverviewText"
+            app:layout_constraintEnd_toEndOf="@id/mMenuOverviewText"
+            android:layout_marginBottom="22dp"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="boss_overview_icon.json"
+            app:lottie_loop="false"
+    />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:elevation="10dp"
+            android:id="@+id/mMenuTopIcon"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="boss_overview_icon.json"
+            app:lottie_loop="false"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/mMenuTopText"
+            app:layout_constraintEnd_toEndOf="@id/mMenuTopText"
+            android:layout_marginBottom="22dp"
+    />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

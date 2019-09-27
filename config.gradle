@@ -1,0 +1,20 @@
+ext {
+    android = [compileSdkVersion       : 28,
+               buildToolsVersion       : "28.0.3",
+               minSdkVersion           : 18,
+               targetSdkVersion        : 28,
+               versionCode             : 1,
+               versionName             : "0.0.1",
+    ]
+    dependencies = [
+            "androidJUnitRunner": "android.support.empty_view.runner.AndroidJUnitRunner",
+            "javax.annotation"  : 'javax.annotation:jsr250-api:1.0',
+            "appcompat-v7"      : "androidx.appcompat:appcompat:1.0.2",
+            "design"            : "com.google.android.material:material:1.0.0-rc01",
+            "support-v4"        : "androidx.legacy:legacy-support-v4:1.0.0",
+            "constraint-layout" : 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4',
+            "recyclerview-v7"   : 'androidx.recyclerview:recyclerview:1.0.0',
+            "BaseAdapter"       : "com.github.CymChad:BaseRecyclerViewAdapterHelper:+"
+    ]
+
+}

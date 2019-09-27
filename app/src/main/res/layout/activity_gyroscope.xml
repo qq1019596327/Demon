@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/text_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:text="x=0.00"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="20sp" />
+
+    <TextView
+            android:id="@+id/text_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:text="y=0.00"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="20sp" />
+
+    <TextView
+            android:id="@+id/text_z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:text="z=0.00"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="20sp" />
+
+
+    <Button
+            android:onClick="onStart"
+            android:text="开始"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

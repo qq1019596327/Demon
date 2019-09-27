@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BossBarView">
+        <attr name="offset_header" format="dimension"/>
+        <attr name="bezier_outer" format="dimension"/>
+        <attr name="bezier_inner" format="dimension"/>
+        <attr name="bezier_radius" format="dimension"/>
+    </declare-styleable>
+</resources>

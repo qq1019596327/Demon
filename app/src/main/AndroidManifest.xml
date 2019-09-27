@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.gongziyi.demon">
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/res_ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/res_ic_launcher_round"
+            android:supportsRtl="true"
+            android:name=".App"
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".arouter.BRouterActivity">
+        </activity>
+        <activity android:name=".arouter.ARouterActivity">
+        </activity>
+        <activity android:name=".constraintDemon.ConstraintLayoutActivity">
+        </activity>
+        <activity android:name=".pop_up_below.PopUpBelowActivity">
+        </activity>
+        <activity android:name=".menuPopup.MenuPopupActivity">
+        </activity>
+        <activity android:name=".twoLevelHeader.TwoLevelHeaderActivity"/>
+        <activity android:name=".bossBar.BossBarActivity"/>
+        <activity android:name=".flexBox.FlexBoxActivity"/>
+        <activity android:name=".gyroscope.GyroscopeActivity"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
