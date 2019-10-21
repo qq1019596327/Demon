@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter
  * @author: gongziyi
  * Description:
  */
-class App:Application(){
+class  App:Application(){
 
     override fun onCreate() {
         super.onCreate()

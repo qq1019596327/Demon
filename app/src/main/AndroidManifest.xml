@@ -25,6 +25,7 @@
         <activity android:name=".twoLevelHeader.TwoLevelHeaderActivity"/>
         <activity android:name=".bossBar.BossBarActivity"/>
         <activity android:name=".flexBox.FlexBoxActivity"/>
+        <activity android:name=".chart.MChartActivity"/>
         <activity android:name=".gyroscope.GyroscopeActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>

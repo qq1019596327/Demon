@@ -53,18 +53,27 @@ dependencies {
     implementation rootProject.ext.dependencies["recyclerview-v7"]
     implementation rootProject.ext.dependencies["BaseAdapter"]
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
-    implementation 'com.google.android:flexbox:1.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //盒子模型
+    implementation 'com.google.android:flexbox:1.1.0'
 
+    //报表视图
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+
+    //动画视图
     implementation "com.airbnb.android:lottie:3.0.7"
     implementation 'androidx.appcompat:appcompat:1.0.2'
 
+    //上滑下拉控件,可用于任意view
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-12'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-12'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//
+//    //拼音库&常用词典
+//    implementation 'com.github.promeg:tinypinyin:2.0.3'
+//    implementation 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
 
-    implementation 'com.github.promeg:tinypinyin:2.0.3'
-    implementation 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
+    //阿里路由
     api 'com.alibaba:arouter-api:1.3.1'
     kapt 'com.alibaba:arouter-compiler:1.1.4'
 }

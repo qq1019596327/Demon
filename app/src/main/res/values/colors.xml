@@ -3,4 +3,10 @@
     <color name="res_colorPrimary">#008577</color>
     <color name="res_colorPrimaryDark">#00574B</color>
     <color name="res_colorAccent">#D81B60</color>
+
+
+    <color name="color_3aa">#3AA0FF</color>
+    <color name="color_fac">#FACC13</color>
+    <color name="color_28e">#28E0C8</color>
+    <color name="color_fb7">#FB7293</color>
 </resources>

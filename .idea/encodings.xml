@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/gongziyi/demon/MainActivity.kt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/gongziyi/demon/arouter/ARouterActivity.kt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/gongziyi/demon/bossBar/BossBarActivity.kt" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

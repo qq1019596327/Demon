@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gongziyi.demon.arouter.ARouterActivity
+import com.gongziyi.demon.chart.MChartActivity
 import com.gongziyi.demon.constraintDemon.ConstraintLayoutActivity
 import com.gongziyi.demon.flexBox.FlexBoxActivity
 import com.gongziyi.demon.gyroscope.GyroscopeActivity
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
             , "ConstraintLayout≤‚ ‘" to ConstraintLayoutActivity::class.java
             , "¬∑”…≤‚ ‘" to ARouterActivity::class.java
             , "Õ”¬›“«≤‚ ‘Activity" to GyroscopeActivity::class.java
+            , "±®±Ì æ¿˝" to MChartActivity::class.java
+            , "“ı”∞≤‚ ‘" to MChartActivity::class.java
         )
     }
 
