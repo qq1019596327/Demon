@@ -12,6 +12,7 @@ import com.gongziyi.demon.flexBox.FlexBoxActivity
 import com.gongziyi.demon.gyroscope.GyroscopeActivity
 import com.gongziyi.demon.menuPopup.MenuPopupActivity
 import com.gongziyi.demon.pop_up_below.PopUpBelowActivity
+import com.gongziyi.demon.shadowTest.ShadowTestActivity
 import com.gongziyi.demon.twoLevelHeader.TwoLevelHeaderActivity
 import kotlinx.android.synthetic.main.res_activity_main.*
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             , "¬∑”…≤‚ ‘" to ARouterActivity::class.java
             , "Õ”¬›“«≤‚ ‘Activity" to GyroscopeActivity::class.java
             , "±®±Ì æ¿˝" to MChartActivity::class.java
-            , "“ı”∞≤‚ ‘" to MChartActivity::class.java
+            , "“ı”∞≤‚ ‘" to ShadowTestActivity::class.java
         )
     }
 
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.res_activity_main)
-        HashSet<String>().size
         mRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         mRecyclerView.adapter = MainAdapter(data).apply {
             setOnItemClickListener { adapter, view, position ->

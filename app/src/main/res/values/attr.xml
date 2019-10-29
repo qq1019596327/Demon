@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="BossBarView">
-        <attr name="offset_header" format="dimension"/>
-        <attr name="bezier_outer" format="dimension"/>
-        <attr name="bezier_inner" format="dimension"/>
-        <attr name="bezier_radius" format="dimension"/>
+        <attr name="offset_header" format="dimension" />
+        <attr name="bezier_outer" format="dimension" />
+        <attr name="bezier_inner" format="dimension" />
+        <attr name="bezier_radius" format="dimension" />
     </declare-styleable>
+
+
+    <declare-styleable name="ShadowAngleConstraintLayout">
+        <attr name="mRadius" format="dimension" />
+        <attr name="mShadowElevation" format="dimension" />
+        <attr name="mShadowAlpha" format="float" />
+        <attr name="mShadowColor" format="color" />
+        <attr name="mRadiusMode" format="flags">
+            <flag name="NORMAL" value="0" />
+            <flag name="UPPER" value="1" />
+            <flag name="LEFT" value="2" />
+            <flag name="LOWER" value="3" />
+            <flag name="RIGHT" value="4" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="GPicCharView">
+        <attr name="mInterval" format="dimension" />
+        <attr name="mHollowingRadius" format="dimension" />
+        <attr name="mShadowRadius" format="dimension" />
+        <attr name="mHighlightWidth" format="dimension" />
+        <attr name="mHighlightColor" format="color" />
+        <attr name="mPathMode" format="flags">
+            <flag name="FILL" value="0" />
+            <flag name="STROKE" value="1" />
+        </attr>
+    </declare-styleable>
+
+
 </resources>
