@@ -1,10 +1,10 @@
 package com.gongziyi.demon.chart.provider
 
-import android.graphics.Color
-import android.view.View
+import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.github.mikephil.charting.charts.BarChart
+import com.gongziyi.demon.R
 import com.gongziyi.demon.chart.CurrencyMarkerView
 
 /**
@@ -16,10 +16,10 @@ abstract class AbstractChartProvider<T>() : BaseItemProvider<T, BaseViewHolder>(
 
     protected val colors by lazy {
         arrayListOf(
-            Color.RED,
-            Color.GREEN,
-            Color.YELLOW,
-            Color.BLUE
+            ContextCompat.getColor(mContext, R.color.color_3aa)
+            , ContextCompat.getColor(mContext, R.color.color_fac)
+            , ContextCompat.getColor(mContext, R.color.color_28e)
+            , ContextCompat.getColor(mContext, R.color.color_fb7)
         )
     }
 

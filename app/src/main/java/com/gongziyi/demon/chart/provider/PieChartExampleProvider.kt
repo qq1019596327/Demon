@@ -55,25 +55,24 @@ class PieChartExampleProvider : AbstractChartProvider<DataBean>() {
     private fun initChar(mPieChart: PieChart) {
 
         mPieChart.apply {
-
+            centerText = generateCenterSpannableText("高端设备,5000","40%")
         }
 
         mPieChart.legend.apply {
 
         }
-
     }
 
 
-    private fun generateCenterSpannableText(): SpannableString {
-        return SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda").apply {
-            setSpan(RelativeSizeSpan(1.7f), 0, 14, 0)
-            setSpan(StyleSpan(Typeface.NORMAL), 14, length - 15, 0)
-            setSpan(ForegroundColorSpan(Color.GRAY), 14, length - 15, 0)
-            setSpan(RelativeSizeSpan(.8f), 14, length - 15, 0)
-            setSpan(StyleSpan(Typeface.ITALIC), length - 14, length, 0)
-            setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), length - 14, length, 0)
-        }
 
+    private fun generateCenterSpannableText(top: String, bottom: String): SpannableString {
+        return SpannableString("$top\n$bottom").apply {
+            setSpan(RelativeSizeSpan(1f), 0, top.length, 0)
+            setSpan(StyleSpan(Typeface.NORMAL), 0, top.length, 0)
+            setSpan(ForegroundColorSpan(Color.parseColor("#8A8C99")), 0, top.length, 0)
+            setSpan(RelativeSizeSpan(1.4f),length-bottom.length, length , 0)
+            setSpan(StyleSpan(Typeface.BOLD), length-bottom.length, length , 0)
+            setSpan(ForegroundColorSpan(Color.parseColor("#33394E")), length-bottom.length, length , 0)
+        }
     }
 }

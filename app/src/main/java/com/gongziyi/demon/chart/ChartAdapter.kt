@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.MultipleItemRvAdapter
 import com.gongziyi.demon.chart.bean.DataBean
 import com.gongziyi.demon.chart.provider.BarChartExampleProvider
+import com.gongziyi.demon.chart.provider.CustomPieChartExampleProvider
 import com.gongziyi.demon.chart.provider.PieChartExampleProvider
 
 /**
@@ -17,12 +18,15 @@ class ChartAdapter(datas: List<DataBean>? = null) :
     companion object {
         //饼状图
         val TYPE_PIE_CHART = 100
+        //自定义饼图
+        val TYPE_CUSTOM_PIE_CHART = 102
         //单柱图
         val TYPE_BAR_CHART = 200
         //双柱图
         val TYPE_DOUBLE_BAR_CHART = 201
         //堆叠图
         val TYPE_STACKING_BAR_CHART = 202
+
     }
 
     init {
@@ -33,9 +37,9 @@ class ChartAdapter(datas: List<DataBean>? = null) :
         /**环形表格 右侧文本*/
         mProviderDelegate.registerProvider(PieChartExampleProvider())
         mProviderDelegate.registerProvider(BarChartExampleProvider())
+        mProviderDelegate.registerProvider(CustomPieChartExampleProvider())
     }
 
-    //todo 区分返回的viewType
     override fun getViewType(t: DataBean): Int = t.type
 
 }
