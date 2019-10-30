@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/idCentralAxisHGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/idCentralAxisVGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+    <com.gongziyi.demon.chart.ui.GPicCharView
+            android:id="@+id/mPieChar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mHighlightWidth="5dp"
+            app:mHollowingRadius="5dp"
+            app:mPathMode="STROKE"
+            app:mShadowRadius="10dp" />
+
+    <TextView
+            android:id="@+id/mDownPieText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019年"
+            android:textColor="#474F66"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toEndOf="@id/mPieChar"
+            app:layout_constraintStart_toStartOf="@id/mPieChar"
+            app:layout_constraintTop_toTopOf="@id/idCentralAxisHGuideline" />
+
+    <TextView
+            android:id="@+id/mUpPieText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#474F66"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/idCentralAxisHGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/mUpPieTextUnit"
+            app:layout_constraintStart_toStartOf="@id/mDownPieText" />
+
+    <TextView
+            android:id="@+id/mUpPieTextUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月"
+            android:textColor="#474F66"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/mUpPieText"
+            app:layout_constraintEnd_toEndOf="@id/mDownPieText"
+            app:layout_constraintStart_toEndOf="@id/mUpPieText" />
+
+    <TextView
+            android:id="@+id/mMoneyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:text="124,111,145.00"
+            android:textColor="@color/color_f78"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/mMoneyHintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="剩余回款金额(元)"
+            android:textColor="#8A8C99"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mMoneyText" />
+
+    <ImageView
+            android:id="@+id/mMoneySwitchIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/mMoneyText"
+            app:layout_constraintStart_toEndOf="@id/mMoneyText"
+            app:layout_constraintTop_toTopOf="@id/mMoneyText"
+            android:src="@mipmap/home_icon_cutover"
+            />
+
+
+    <TextView
+            android:id="@+id/mBeOverdueHintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="逾期笔数"
+            android:textColor="#8A8C99"
+            android:textSize="11sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/mMoneyHintText"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+            android:id="@+id/mBeOverdueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textColor="#33394E"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/mMoneyText"
+            app:layout_constraintEnd_toEndOf="@id/mBeOverdueHintText"
+            app:layout_constraintStart_toStartOf="@id/mBeOverdueHintText" />
+
+
+    <TextView
+            android:id="@+id/mTotalMoneyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingStart="8dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
+            android:text="总额(元): 829,890,110.00"
+            android:textColor="@color/color_08f"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+            android:id="@+id/idTotalMoneyTextBg"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:alpha="0.08"
+            android:background="@drawable/res_pie_tag_bg"
+            app:layout_constraintBottom_toBottomOf="@id/mTotalMoneyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/mTotalMoneyText"
+            app:layout_constraintTop_toTopOf="@id/mTotalMoneyText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

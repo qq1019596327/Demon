@@ -22,17 +22,7 @@ class MChartActivity : AppCompatActivity() {
         arrayListOf<DataBean>().apply {
             add(DataBean(ChartAdapter.TYPE_CUSTOM_PIE_CHART).apply {
                 listData = arrayListOf<EntryData>().apply {
-                    for (i in 0..3) {
-                        val entry = EntryData()
-                        entry.mValue =(Math.random() * 10).toFloat()
-                        entry.mName = "饼图数据$i"
-                        add(entry)
-                    }
-                }
-            })
-            add(DataBean(ChartAdapter.TYPE_PIE_CHART).apply {
-                listData = arrayListOf<EntryData>().apply {
-                    for (i in 0..3) {
+                    for (i in 0..1) {
                         val entry = EntryData()
                         entry.mValue = (Math.random() * 10).toFloat()
                         entry.mName = "饼图数据$i"
@@ -40,7 +30,17 @@ class MChartActivity : AppCompatActivity() {
                     }
                 }
             })
-            add(DataBean(ChartAdapter.TYPE_CUSTOMIZED_PIE_CHART).apply {
+            add(DataBean(ChartAdapter.TYPE_CUSTOM_LEGEND_PIE_CHART).apply {
+                listData = arrayListOf<EntryData>().apply {
+                    for (i in 0..6) {
+                        val entry = EntryData()
+                        entry.mValue = (Math.random() * 1000).toInt().toFloat()
+                        entry.mName = "饼图${i}数据"
+                        add(entry)
+                    }
+                }
+            })
+            add(DataBean(ChartAdapter.TYPE_PIE_CHART).apply {
                 listData = arrayListOf<EntryData>().apply {
                     for (i in 0..3) {
                         val entry = EntryData()

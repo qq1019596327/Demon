@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@android:color/white">
+
+    <TextView
+            android:id="@+id/mTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="项目行业分类占比"
+            android:textColor="#474F66"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/mSubtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="8大行业"
+            android:textColor="#474F66"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.gongziyi.demon.chart.ui.GPicCharView
+            android:id="@+id/mPieChar"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mTitleText"
+            app:mHighlightWidth="10dp"
+            app:mHollowingRadius="20dp"
+            app:mInterval="5dp"
+            app:mPathMode="STROKE"
+            app:mShadowRadius="10dp" />
+
+    <View
+            android:id="@+id/idCentralAxisGuideline"
+            android:layout_width="1px"
+            android:layout_height="1px"
+            app:layout_constraintBottom_toBottomOf="@id/mPieChar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/mPieChar" />
+
+    <TextView
+            android:id="@+id/mUpPieText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="高端设备,5000"
+            android:textColor="#8A8C99"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/idCentralAxisGuideline"
+            app:layout_constraintEnd_toEndOf="@id/idCentralAxisGuideline"
+            app:layout_constraintStart_toStartOf="@id/idCentralAxisGuideline" />
+
+    <TextView
+            android:id="@+id/mDownPieText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40%"
+            android:textColor="#33394E"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/idCentralAxisGuideline"
+            app:layout_constraintStart_toStartOf="@id/idCentralAxisGuideline"
+            app:layout_constraintTop_toTopOf="@id/idCentralAxisGuideline" />
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mPieChar">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mPieRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

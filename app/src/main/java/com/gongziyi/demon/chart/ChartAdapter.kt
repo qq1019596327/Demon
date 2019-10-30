@@ -4,8 +4,9 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.MultipleItemRvAdapter
 import com.gongziyi.demon.chart.bean.DataBean
 import com.gongziyi.demon.chart.provider.BarChartExampleProvider
-import com.gongziyi.demon.chart.provider.CustomPieChartExampleProvider
+import com.gongziyi.demon.chart.provider.PieChartItemProvider
 import com.gongziyi.demon.chart.provider.PieChartExampleProvider
+import com.gongziyi.demon.chart.provider.PieChartLegendProvider
 
 /**
  * Created on 2019/10/8
@@ -20,6 +21,8 @@ class ChartAdapter(datas: List<DataBean>? = null) :
         val TYPE_PIE_CHART = 100
         //自定义饼图
         val TYPE_CUSTOM_PIE_CHART = 102
+        //自定义图例饼图
+        val TYPE_CUSTOM_LEGEND_PIE_CHART = 103
         //单柱图
         val TYPE_BAR_CHART = 200
         //双柱图
@@ -37,7 +40,8 @@ class ChartAdapter(datas: List<DataBean>? = null) :
         /**环形表格 右侧文本*/
         mProviderDelegate.registerProvider(PieChartExampleProvider())
         mProviderDelegate.registerProvider(BarChartExampleProvider())
-        mProviderDelegate.registerProvider(CustomPieChartExampleProvider())
+        mProviderDelegate.registerProvider(PieChartItemProvider())
+        mProviderDelegate.registerProvider(PieChartLegendProvider())
     }
 
     override fun getViewType(t: DataBean): Int = t.type

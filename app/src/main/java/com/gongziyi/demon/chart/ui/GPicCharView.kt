@@ -45,6 +45,8 @@ open class GPicCharView @JvmOverloads constructor(
     protected var mDataHelper: IPicCharDataHelper? = null
     /**颜料集*/
     protected var mColorList: IntArray
+    /**颜料集*/
+    protected var mShadowColorList: IntArray? = null
     /**高亮颜色*/
     protected var mHighlightColor: Int = Color.WHITE
 
@@ -194,7 +196,11 @@ open class GPicCharView @JvmOverloads constructor(
      * lp/rp 可以用于拓宽或裁切矩形
      * @param progress 进度 也就是相对与0,0点的夹角
      */
-    protected open fun getEdgePathPair(right: Float, radius: Float, progress: Float): Pair<Path, Path> {
+    protected open fun getEdgePathPair(
+        right: Float,
+        radius: Float,
+        progress: Float
+    ): Pair<Path, Path> {
         val lP = Path()
         lP.addRect(0f, -radius, right, radius, Path.Direction.CW)
         val rP = Path()
@@ -245,7 +251,11 @@ open class GPicCharView @JvmOverloads constructor(
     }
 
     /**初始化高亮饼*/
-    protected open fun initHighlightPath(outerPath: Path, innerPath: Path, data: IPicCharDataHelper) {
+    protected open fun initHighlightPath(
+        outerPath: Path,
+        innerPath: Path,
+        data: IPicCharDataHelper
+    ) {
         if (!isKitkat()) return
         if (mHighlightIndex !in 0 until data.getItemCount()) return
 
@@ -350,6 +360,12 @@ open class GPicCharView @JvmOverloads constructor(
         invalidate()
     }
 
+    //设置颜色集
+    open fun setShadowColors(colors: IntArray) {
+        mShadowColorList = colors
+        invalidate()
+    }
+
 
     //设置高亮
     open fun setHighlightIndex(index: Int) {
@@ -402,8 +418,9 @@ open class GPicCharView @JvmOverloads constructor(
         //在画高亮单位
         pathSet.getOrNull(mHighlightIndex)?.apply {
             val color = mColorList[mHighlightIndex % mColorList.size]
+            val shadowColor = mShadowColorList?.let { it[mHighlightIndex % it.size] } ?: color
             //从阴影到 高亮线框 再到默认线框
-            mShadowPen.color = color
+            mShadowPen.color = shadowColor
             canvas.drawPath(indexPath, mShadowPen)
 
             mCuttingPen.color = mHighlightColor
