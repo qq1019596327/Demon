@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/gallery_layout">
+
+    <View
+        android:id="@+id/mBoundary"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <ImageView
+        android:id="@+id/mImageView"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@color/color_08f"
+        />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

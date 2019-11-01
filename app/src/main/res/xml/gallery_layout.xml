@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/mImageView"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/mBoundary"
+            android:layout_width="44dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@id/mImageView"
+            app:layout_constraintTop_toTopOf="@id/mImageView" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/mImageView"
+            android:layout_width="184dp"
+            android:layout_height="249dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/mBoundary"
+            android:layout_width="44dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toEndOf="@id/mImageView"
+            app:layout_constraintTop_toTopOf="@id/mImageView" />
+    </ConstraintSet>
+
+
+    <Transition
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@+id/start" />
+</MotionScene>

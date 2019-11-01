@@ -9,6 +9,7 @@ import com.gongziyi.demon.arouter.ARouterActivity
 import com.gongziyi.demon.chart.MChartActivity
 import com.gongziyi.demon.constraintDemon.ConstraintLayoutActivity
 import com.gongziyi.demon.flexBox.FlexBoxActivity
+import com.gongziyi.demon.gallery.ResourceGalleryActivity
 import com.gongziyi.demon.gyroscope.GyroscopeActivity
 import com.gongziyi.demon.menuPopup.MenuPopupActivity
 import com.gongziyi.demon.pop_up_below.PopUpBelowActivity
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             , "Õ”¬›“«≤‚ ‘Activity" to GyroscopeActivity::class.java
             , "±®±Ì æ¿˝" to MChartActivity::class.java
             , "“ı”∞≤‚ ‘" to ShadowTestActivity::class.java
+            , "◊ ‘¥ª≠¿»" to ResourceGalleryActivity::class.java
         )
     }
 

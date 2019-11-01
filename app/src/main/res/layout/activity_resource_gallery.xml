@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/mProgressRegion"
+        android:layout_width="200px"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/color_08f" />
+    <View
+        android:id="@+id/mStartPadding"
+        android:layout_width="100px"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/color_3c8" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+</LinearLayout>
