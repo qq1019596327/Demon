@@ -4,7 +4,6 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     app:layoutDescription="@xml/gallery_layout">
 
     <androidx.constraintlayout.widget.Guideline
@@ -29,11 +28,11 @@
         android:layout_width="44dp"
         android:layout_height="22dp" />
 
-
-    <View
+    <com.gongziyi.demon.shadowTest.ShadowAngleConstraintLayout
         android:id="@+id/mCardLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        app:mRadius="4dp" />
 
     <TextView
         android:id="@+id/mDownHintText"
@@ -64,12 +63,23 @@
         android:text="10.23"
         android:textColor="@color/color_f78" />
 
-
     <ImageView
         android:id="@+id/mImageView"
         android:layout_width="156dp"
         android:layout_height="156dp"
         android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/mImageTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/color_a123"
+        android:paddingStart="8dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="6dp"
+        android:text="科兴科学大厦"
+        android:textColor="@android:color/white" />
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

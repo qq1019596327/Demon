@@ -19,6 +19,7 @@
     <color name="color_fe2">#F0E32B</color>
     <color name="color_5ec">#50E3C2</color>
     <color name="color_88f">#8983F2</color>
+    <color name="color_123">#1C2D3B</color>
 
 
 
@@ -30,5 +31,6 @@
     <color name="color_afe2">#4DF0E32B</color>
     <color name="color_a5ec">#4D50E3C2</color>
     <color name="color_a88f">#4D8983F2</color>
+    <color name="color_a123">#4D1C2D3B</color>
 
 </resources>

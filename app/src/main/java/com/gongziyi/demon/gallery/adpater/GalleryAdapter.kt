@@ -1,7 +1,9 @@
 package com.gongziyi.demon.gallery.adpater
 
+import android.graphics.Color
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.gongziyi.demon.R
@@ -24,7 +26,8 @@ class GalleryAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_ga
             ContextCompat.getColor(mContext, R.color.color_f78),
             ContextCompat.getColor(mContext, R.color.color_fe2),
             ContextCompat.getColor(mContext, R.color.color_5ec),
-            ContextCompat.getColor(mContext, R.color.color_88f)
+            ContextCompat.getColor(mContext, R.color.color_88f),
+            ContextCompat.getColor(mContext, R.color.color_123)
         )
     }
 
@@ -37,18 +40,19 @@ class GalleryAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_ga
             ContextCompat.getColor(mContext, R.color.color_af78),
             ContextCompat.getColor(mContext, R.color.color_afe2),
             ContextCompat.getColor(mContext, R.color.color_a5ec),
-            ContextCompat.getColor(mContext, R.color.color_a88f)
+            ContextCompat.getColor(mContext, R.color.color_a88f),
+            ContextCompat.getColor(mContext, R.color.color_a123)
         )
     }
 
 
     override fun convert(helper: BaseViewHolder, item: String?) {
-        helper.setBackgroundColor(R.id.mBoundary, colors[helper.adapterPosition % colors.size])
-        helper.setBackgroundColor(R.id.mCardLayout, bgColors[helper.adapterPosition % colors.size])
+        helper.setBackgroundColor(R.id.mBoundary, ContextCompat.getColor(mContext, R.color.color_a123))
+        helper.setBackgroundColor(R.id.mCardLayout, Color.WHITE)
         helper.addOnClickListener(R.id.mCardLayout)
         Glide.with(mContext)
             .load(item)
+            .transform(RoundedCorners(8))
             .into(helper.getView(R.id.mImageView))
     }
-
 }

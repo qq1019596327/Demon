@@ -19,9 +19,9 @@ import kotlin.math.abs
 
 class GalleryLayoutManager : RecyclerView.LayoutManager() {
     /**当前总宽度,动态计算产生*/
-    private var totalWidth: Int = 0
+    private var mTotalWidth: Int = 0
     /**当前滑动位置,动态计算产生*/
-    private var scrollOffset: Int = 0
+    private var mScrollOffset: Int = 0
     /**矩阵集合*/
     private val allRects: SparseArray<Rect> = SparseArray<Rect>()
     /**视图进度变化 progress变化曲线 0f->1f->0f*/
@@ -55,8 +55,8 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
     //计算子View大小及
     private fun calculateChildrenSize(recycler: RecyclerView.Recycler?) {
         val smooth = smoothRegion
-        totalWidth = startPadding + smooth
-        scrollOffset = smooth
+        mTotalWidth = startPadding + smooth
+        mScrollOffset = smooth
         for (i in 0 until itemCount) {
             val v = recycler!!.getViewForPosition(i)
             addView(v)
@@ -69,72 +69,71 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
                 childRect = Rect()
             }
             childRect!!.set(
-                totalWidth,
+                mTotalWidth,
                 (height - childHeight) shr 1,
-                totalWidth + childWidth,
+                mTotalWidth + childWidth,
                 (height + childHeight) shr 1
             )
-            totalWidth += childWidth
+            mTotalWidth += childWidth
             allRects.put(i, childRect)
             if (i == itemCount - 1) {
                 val filling = width - startPadding - childWidth
-                totalWidth += filling
+                mTotalWidth += filling
             }
         }
-        totalWidth += smooth
+        mTotalWidth += smooth
     }
 
 
-    override fun scrollHorizontallyBy(dx: Int, recycler: RecyclerView.Recycler?, state: RecyclerView.State?): Int {
-        var dx = dx
-        if (scrollOffset + dx < 0) {
-            dx = -scrollOffset
-        } else if (scrollOffset + dx > totalWidth - width) {
-            dx = totalWidth - width - scrollOffset
+    override fun scrollHorizontallyBy(px: Int, recycler: RecyclerView.Recycler?, state: RecyclerView.State?): Int {
+        var dx = px
+        if (mScrollOffset + dx < 0) {
+            dx = -mScrollOffset
+        } else if (mScrollOffset + dx > mTotalWidth - width) {
+            dx = mTotalWidth - width - mScrollOffset
         }
         offsetChildrenHorizontal(-dx)
         recyclerAndFillView(recycler, state)
-        scrollOffset += dx
+        mScrollOffset += dx
         return dx
     }
 
 
     private fun recyclerAndFillView(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         if (itemCount == 0 || state!!.isPreLayout) return
-        val w = width
+        val w = width + startPadding
         val h = height
         detachAndScrapAttachedViews(recycler!!)
-        val displayRect = Rect(scrollOffset, 0, scrollOffset + w, h)
-        var progress: Float
-        var offset: Int
-        var startPos: Int
+        val displayRect = Rect(mScrollOffset, 0, mScrollOffset + w, h)
         for (i in 0 until itemCount) {
             val rect = allRects.get(i)
             val view = recycler.getViewForPosition(i)
-
-            if (Rect.intersects(displayRect, rect)) {
-                measureChildWithMargins(view, 0, 0)
-                addView(view)
-                //基于startPadding获得开始点.
-                startPos = rect.left - startPadding - scrollOffset
-                //基于开始点的正数
-                val startAbsPos = abs(startPos).toFloat()
-                progress = getProgress(startAbsPos)
-                offset = getOffsetPadding(progress, startPos >= 0)
-                val scale = (rect.width() * magnification * progress).toInt()
-
-                onViewChange(view, progress)
-                layoutDecorated(
-                    view,
-                    rect.left - scrollOffset + offset,
-                    rect.top,
-                    rect.right - scrollOffset + scale + offset,
-                    rect.bottom
-                )
+            if (Rect.intersects(displayRect, rect)  ) {
+                fillView(view, rect, mScrollOffset)
             } else {
                 removeAndRecycleView(view, recycler)
             }
         }
+    }
+
+    private fun fillView(view: View, rect: Rect, scrollOffset: Int) {
+        //基于startPadding获得开始点.
+        val startPos = rect.left - startPadding - scrollOffset
+        val startAbsPos = abs(startPos).toFloat()
+        val progress = getProgress(startAbsPos)
+        val offset = getOffsetPadding(progress, startPos >= 0)
+        measureChildWithMargins(view, 0, 0)
+        addView(view)
+        //基于开始点的正数
+        val scale = (rect.width() * magnification * progress).toInt()
+        onViewChange(view, progress)
+        layoutDecorated(
+            view,
+            rect.left - scrollOffset + offset,
+            rect.top,
+            rect.right - scrollOffset + scale + offset,
+            rect.bottom
+        )
     }
 
     /**计算膨胀偏移*/
@@ -181,7 +180,7 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
 
     override fun getDecoratedLeft(child: View): Int {
         val position = getPosition(child)
-        return allRects.get(position).left - scrollOffset
+        return allRects.get(position).left - mScrollOffset
     }
 
     fun setOnViewByProgressChange(fun0: (view: View, progress: Float) -> Unit) {

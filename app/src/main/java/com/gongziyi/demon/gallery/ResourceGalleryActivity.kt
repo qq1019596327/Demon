@@ -5,11 +5,13 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.view.ViewCompat
 import com.gongziyi.demon.R
 import com.gongziyi.demon.gallery.adpater.GallerySnapHelper
 import com.gongziyi.demon.gallery.adpater.GalleryAdapter
 import com.gongziyi.demon.gallery.adpater.GalleryLayoutManager
 import com.gongziyi.demon.gallery.view.IGalleryScrollChangeListener
+import com.gongziyi.demon.shadowTest.ShadowAngleConstraintLayout
 import kotlinx.android.synthetic.main.activity_resource_gallery.*
 
 
@@ -43,6 +45,9 @@ class ResourceGalleryActivity : AppCompatActivity(), IGalleryScrollChangeListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resource_gallery)
+//        val width =  resources.displayMetrics.widthPixels/2
+//        progressRegion=width
+//        startPadding=width
         mStartPadding.layoutParams.width = startPadding
         mProgressRegion.layoutParams.width = progressRegion * 2
         mSmoothRegion.layoutParams.width = smoothRegion * 2
@@ -53,8 +58,7 @@ class ResourceGalleryActivity : AppCompatActivity(), IGalleryScrollChangeListene
             it.setStartPadding(startPadding)
             it.setProgressRegion(progressRegion)
             it.setSmoothRegion(smoothRegion)
-            it.setPaddingOffset(paddingOffset
-            )
+            it.setPaddingOffset(paddingOffset)
             it.setMagnification(magnification)
             it.adapter = mAdapter
             it.addOnScrollChangeListener(this)
@@ -73,11 +77,24 @@ class ResourceGalleryActivity : AppCompatActivity(), IGalleryScrollChangeListene
     override fun onViewChangeCall(view: View, progress: Float) {
         if (view is MotionLayout) {
             view.progress = progress
+            val layout = view.findViewById<ShadowAngleConstraintLayout>(R.id.mCardLayout)
+            layout.setShadow(30 * progress, 1f)
+            view.setZ(R.id.mCardLayout, progress)
+            view.setZ(R.id.mDownHintText, progress)
+            view.setZ(R.id.mUpHintText, progress)
+            view.setZ(R.id.mDownText, progress)
+            view.setZ(R.id.mUpText, progress)
+            view.setZ(R.id.mImageView, progress)
+            view.setZ(R.id.mImageTitle, progress)
         }
     }
 
     override fun onScrollIdleListener(activePosition: Int) {
         Log.i("==============", "activePosition=$activePosition")
+    }
+
+    private fun View.setZ(idInt: Int, progress: Float) {
+        ViewCompat.setZ(findViewById(idInt), 50 * progress + 1)
     }
 
 }
