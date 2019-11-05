@@ -4,18 +4,72 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     app:layoutDescription="@xml/gallery_layout">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HorizontalGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
     <View
-        android:id="@+id/mBoundary"
+        android:id="@+id/mLeftTopGuideDot"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
+    <View
+        android:id="@+id/mRightBottomGuideDot"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <View
+        android:id="@+id/mBoundary"
+        android:layout_width="44dp"
+        android:layout_height="22dp" />
+
+
+    <View
+        android:id="@+id/mCardLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:id="@+id/mDownHintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="楼层(地上/地下)" />
+
+    <TextView
+        android:id="@+id/mUpHintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="均价(元/m²/天)" />
+
+
+    <TextView
+        android:id="@+id/mDownText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="100/2"
+        android:textColor="@color/color_f78" />
+
+    <TextView
+        android:id="@+id/mUpText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="10.23"
+        android:textColor="@color/color_f78" />
+
+
     <ImageView
         android:id="@+id/mImageView"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:background="@color/color_08f"
-        />
+        android:layout_width="156dp"
+        android:layout_height="156dp"
+        android:scaleType="centerCrop" />
+
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
