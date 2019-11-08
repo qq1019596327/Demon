@@ -25,8 +25,5 @@ class RouterInterceptor : IInterceptor {
         }
     }
 
-    override fun init(context: Context?) {
-
-    }
-
+    override fun init(context: Context?) = Unit
 }

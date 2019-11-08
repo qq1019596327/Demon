@@ -12,7 +12,6 @@ import com.gongziyi.demon.flexBox.FlexBoxActivity
 import com.gongziyi.demon.gallery.ResourceGalleryActivity
 import com.gongziyi.demon.gyroscope.GyroscopeActivity
 import com.gongziyi.demon.menuPopup.MenuPopupActivity
-import com.gongziyi.demon.pop_up_below.PopUpBelowActivity
 import com.gongziyi.demon.shadowTest.ShadowTestActivity
 import com.gongziyi.demon.twoLevelHeader.TwoLevelHeaderActivity
 import kotlinx.android.synthetic.main.res_activity_main.*
@@ -21,17 +20,15 @@ class MainActivity : AppCompatActivity() {
 
     private val data by lazy {
         arrayListOf(
-            "µ¯ĞÔºĞ×ÓÄ£ĞÍ" to FlexBoxActivity::class.java,
-            "µ×²¿µ¯´°Àà" to PopUpBelowActivity::class.java
-            , "???????????" to TwoLevelHeaderActivity::class.java
-            , "¶şÂ¥" to TwoLevelHeaderActivity::class.java
-            , "???????????" to MenuPopupActivity::class.java
-            , "ConstraintLayout²âÊÔ" to ConstraintLayoutActivity::class.java
-            , "Â·ÓÉ²âÊÔ" to ARouterActivity::class.java
-            , "ÍÓÂİÒÇ²âÊÔActivity" to GyroscopeActivity::class.java
-            , "±¨±íÊ¾Àı" to MChartActivity::class.java
-            , "ÒõÓ°²âÊÔ" to ShadowTestActivity::class.java
-            , "×ÊÔ´»­ÀÈ" to ResourceGalleryActivity::class.java
+            "å¼¹æ€§ç›’å­æ¨¡å‹" to FlexBoxActivity::class.java
+            , "äºŒæ¥¼æ•ˆæœ" to TwoLevelHeaderActivity::class.java
+            , "å¼¹å‡ºèœå•" to MenuPopupActivity::class.java
+            , "ConstraintLayoutè¿›é˜¶ç”¨æ³•" to ConstraintLayoutActivity::class.java
+            , "è·¯ç”±æµ‹è¯•" to ARouterActivity::class.java
+            , "é™€èºä»ªæµ‹è¯•Activity" to GyroscopeActivity::class.java
+            , "æŠ¥è¡¨ç¤ºä¾‹" to MChartActivity::class.java
+            , "é˜´å½±æµ‹è¯•" to ShadowTestActivity::class.java
+            , "èµ„æºç”»å»Š" to ResourceGalleryActivity::class.java
         )
     }
 

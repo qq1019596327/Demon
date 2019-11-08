@@ -26,14 +26,14 @@ class ARouterActivity : AppCompatActivity() {
     fun argumentToB(view: View) {
         ARouter.getInstance()
             .build("/main/activity")
-            .withString("name", "单p,群p，交换，野合，暴露，单男，双飞，sm,调教，捆绑，窒息交配，换装，易装，人兽，道具。")
+            .withString("name", "徐志摩曾说过：“一生中至少该有一次，为了某个人而忘记了自己，不求结果，不求同行，不求曾经拥有，甚至不求你爱我，只求在我最美的年华里，遇见你。”")
             .navigation()
     }
 
     fun argumentToBAndCall(view: View) {
         ARouter.getInstance()
             .build("/main/activity")
-            .withString("name", "单p,群p，交换，野合，暴露，单男，双飞，sm,调教，捆绑，窒息交配，换装，易装，人兽，道具。")
+            .withString("name", "有一句话说：“人的一生会遇到两个人，一个惊艳了时光，一个温柔了岁月。”")
             .navigation(this, object : NavigationCallback {
                 override fun onLost(postcard: Postcard?) {
                     Log.i("==========","onLost")

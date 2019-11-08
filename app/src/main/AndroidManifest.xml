@@ -17,7 +17,6 @@
         <activity android:name=".arouter.BRouterActivity" />
         <activity android:name=".arouter.ARouterActivity" />
         <activity android:name=".constraintDemon.ConstraintLayoutActivity" />
-        <activity android:name=".pop_up_below.PopUpBelowActivity" />
         <activity android:name=".menuPopup.MenuPopupActivity" />
         <activity android:name=".twoLevelHeader.TwoLevelHeaderActivity" />
         <activity android:name=".bossBar.BossBarActivity" />
