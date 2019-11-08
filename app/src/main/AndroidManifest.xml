@@ -25,15 +25,13 @@
         <activity android:name=".chart.MChartActivity" />
         <activity android:name=".shadowTest.ShadowTestActivity" />
         <activity android:name=".gyroscope.GyroscopeActivity" />
-        <activity android:name=".gallery.ResourceGalleryActivity" >
+        <activity android:name=".gallery.ResourceGalleryActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
-
         </activity>
     </application>
 
