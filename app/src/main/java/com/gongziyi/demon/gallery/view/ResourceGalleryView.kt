@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.gongziyi.demon.R
 import com.gongziyi.demon.gallery.adpater.GalleryLayoutManager
 import com.gongziyi.demon.gallery.adpater.GallerySnapHelper
 
@@ -21,17 +22,24 @@ class ResourceGalleryView @JvmOverloads constructor(
 
     private var mListener: IGalleryScrollChangeListener? = null
 
-    private val mLayoutManager: GalleryLayoutManager by lazy {
-        getDefaultLayoutManager()
+    private val mLayoutManager by lazy {
+        GalleryLayoutManager()
     }
-    private val mSnapHelper: GallerySnapHelper by lazy {
-        getDefaultSnapHelper()
+    private val mSnapHelper by lazy {
+        GallerySnapHelper()
     }
 
     private var currentAdapterPosition = NO_POSITION
 
 
     init {
+        val t = context.obtainStyledAttributes(attrs, R.styleable.ResourceGalleryView)
+        setStartPadding(t.getDimensionPixelOffset(R.styleable.ResourceGalleryView_mStartPadding, 0) )
+        setProgressRegion(t.getDimensionPixelOffset(R.styleable.ResourceGalleryView_mProgressRegion, 0))
+        setSmoothRegion(t.getDimensionPixelOffset(R.styleable.ResourceGalleryView_mSmoothRegion, 0))
+        setPaddingOffset(t.getDimensionPixelOffset(R.styleable.ResourceGalleryView_mPaddingOffset, 0))
+        setOpenSize(t.getDimensionPixelOffset(R.styleable.ResourceGalleryView_mMagnification, 0))
+        t.recycle()
         addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -44,18 +52,15 @@ class ResourceGalleryView @JvmOverloads constructor(
                 }
             }
         })
+        mLayoutManager.setOnViewByProgressChange { view, progress ->
+            mListener?.onViewChangeCall(
+                view,
+                progress
+            )
+        }
 
     }
 
-
-    /**获取默认布局管理器*/
-    private fun getDefaultLayoutManager() = GalleryLayoutManager().let {
-        it.setOnViewByProgressChange { v, p -> mListener?.onViewChangeCall(v, p) }
-        it
-    }
-
-    /**获取默认滑动捕捉助手*/
-    private fun getDefaultSnapHelper() = GallerySnapHelper()
 
     /**
      * 选中变更
@@ -65,9 +70,10 @@ class ResourceGalleryView @JvmOverloads constructor(
         if (isScroll && currentAdapterPosition != pos) {
             smoothScrollToPosition(pos)
         }
-        mListener?.onScrollIdleListener(pos)
+        if (currentAdapterPosition != pos) {
+            mListener?.onScrollIdleListener(pos)
+        }
         currentAdapterPosition = pos
-
     }
 
 
@@ -112,11 +118,11 @@ class ResourceGalleryView @JvmOverloads constructor(
     }
 
     fun setPaddingOffset(value: Int) {
-        mLayoutManager.expandOffset = value
+        mLayoutManager.paddingOffset = value
     }
 
-    fun setMagnification(value: Float) {
-        mLayoutManager.magnification = value
+    fun setOpenSize(value: Int) {
+        mLayoutManager.openSize = value
     }
 }
 

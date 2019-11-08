@@ -5,34 +5,22 @@
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
-            android:id="@+id/mBoundary"
+            android:id="@+id/mIndexView"
             android:layout_width="44dp"
             android:layout_height="22dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0"
             app:layout_constraintEnd_toEndOf="@+id/mCardLayout"
             app:layout_constraintTop_toTopOf="@+id/mCardLayout" />
-
-        <Constraint
-            android:id="@+id/mLeftTopGuideDot"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/mImageView"
-            app:layout_constraintEnd_toStartOf="@id/mImageView" />
-
-        <Constraint
-            android:id="@+id/mRightBottomGuideDot"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toEndOf="@id/mImageView"
-            app:layout_constraintTop_toBottomOf="@id/mImageView" />
 
         <Constraint
             android:id="@+id/mCardLayout"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            app:layout_constraintBottom_toBottomOf="@id/HorizontalGuideLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/mImageView"
+            app:layout_constraintEnd_toEndOf="@id/mImageView"
+            app:layout_constraintStart_toStartOf="@id/mImageView"
+            app:layout_constraintTop_toTopOf="@id/mImageView" />
 
 
         <Constraint
@@ -41,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="18dp"
+            android:alpha="0"
             app:layout_constraintBottom_toBottomOf="@id/mCardLayout"
             app:layout_constraintStart_toStartOf="@id/mCardLayout" />
 
@@ -50,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="18dp"
+            android:alpha="0"
             app:layout_constraintBottom_toTopOf="@id/mDownHintText"
             app:layout_constraintStart_toStartOf="@id/mCardLayout" />
 
@@ -60,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
             android:textColor="@color/color_f78"
+            android:alpha="0"
             app:layout_constraintBaseline_toBaselineOf="@id/mDownHintText"
             app:layout_constraintEnd_toEndOf="@id/mCardLayout"
             app:layout_constraintStart_toStartOf="@id/mDownHintText" />
@@ -70,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
             android:textColor="@color/color_f78"
+            android:alpha="0"
             app:layout_constraintBaseline_toBaselineOf="@id/mUpHintText"
             app:layout_constraintEnd_toEndOf="@id/mCardLayout"
             app:layout_constraintStart_toStartOf="@id/mUpHintText" />
@@ -80,13 +72,13 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             app:layout_constraintBottom_toBottomOf="@id/HorizontalGuideLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="@id/PaddingGuideLine" />
 
         <Constraint
             android:id="@+id/mImageTitle"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha="0"
             app:layout_constraintBottom_toBottomOf="@id/mImageView"
             app:layout_constraintEnd_toEndOf="@id/mImageView"
             app:layout_constraintStart_toStartOf="@id/mImageView" />
@@ -96,46 +88,30 @@
     <ConstraintSet android:id="@+id/end">
 
         <Constraint
-            android:id="@+id/mLeftTopGuideDot"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="14dp"
-            app:layout_constraintBottom_toTopOf="@id/mImageView"
-            app:layout_constraintEnd_toStartOf="@id/mImageView" />
-
-        <Constraint
-            android:id="@+id/mRightBottomGuideDot"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toEndOf="@id/mImageView"
-            app:layout_constraintTop_toBottomOf="@id/mDownText" />
-
-        <Constraint
-            android:id="@+id/mBoundary"
+            android:id="@+id/mIndexView"
             android:layout_width="44dp"
             android:layout_height="22dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0.6"
             app:layout_constraintStart_toEndOf="@+id/mCardLayout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mCardLayout" />
 
 
         <Constraint
             android:id="@+id/mCardLayout"
-            android:layout_width="0dp"
+            android:layout_width="185dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/mRightBottomGuideDot"
-            app:layout_constraintEnd_toEndOf="@id/mRightBottomGuideDot"
-            app:layout_constraintStart_toStartOf="@id/mLeftTopGuideDot"
-            app:layout_constraintTop_toTopOf="@id/mLeftTopGuideDot" />
+            app:layout_constraintBottom_toBottomOf="@id/HorizontalGuideLineBottom"
+            app:layout_constraintStart_toStartOf="@id/PaddingGuideLine"
+            app:layout_constraintTop_toTopOf="@id/HorizontalGuideLineTop" />
 
         <Constraint
             android:id="@+id/mDownHintText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:alpha="1"
             app:layout_constraintStart_toStartOf="@id/mImageView"
             app:layout_constraintTop_toBottomOf="@id/mUpHintText" />
 
@@ -144,6 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:alpha="1"
             app:layout_constraintStart_toStartOf="@id/mImageView"
             app:layout_constraintTop_toTopOf="@id/HorizontalGuideLine" />
 
@@ -152,6 +129,7 @@
             android:id="@+id/mDownText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:alpha="1"
             app:layout_constraintBaseline_toBaselineOf="@id/mDownHintText"
             app:layout_constraintEnd_toEndOf="@id/mImageView"
             app:layout_constraintStart_toEndOf="@id/mDownHintText" />
@@ -160,6 +138,7 @@
             android:id="@+id/mUpText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:alpha="1"
             app:layout_constraintBaseline_toBaselineOf="@id/mUpHintText"
             app:layout_constraintEnd_toEndOf="@id/mImageView"
             app:layout_constraintStart_toEndOf="@id/mUpHintText" />
@@ -173,17 +152,15 @@
             app:layout_constraintEnd_toEndOf="@id/mCardLayout"
             app:layout_constraintStart_toStartOf="@id/mCardLayout" />
 
-
-
         <Constraint
             android:id="@+id/mImageTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:alpha="1"
             app:layout_constraintBottom_toBottomOf="@id/mImageView"
             app:layout_constraintEnd_toEndOf="@id/mImageView"
             app:layout_constraintStart_toStartOf="@id/mImageView" />
     </ConstraintSet>
-
 
     <Transition
         app:constraintSetEnd="@+id/end"

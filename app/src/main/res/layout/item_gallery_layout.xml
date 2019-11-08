@@ -7,31 +7,55 @@
     app:layoutDescription="@xml/gallery_layout">
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HorizontalGuideLineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.022" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HorizontalGuideLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.65" />
 
-    <View
-        android:id="@+id/mLeftTopGuideDot"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HorizontalGuideLineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.978" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/PaddingGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="18dp" />
+
 
     <View
-        android:id="@+id/mRightBottomGuideDot"
+        android:id="@+id/mIndexView"
         android:layout_width="0dp"
-        android:layout_height="0dp" />
+        android:layout_height="22dp"
+        android:background="@drawable/res_gallery_tag_bg" />
 
-    <View
-        android:id="@+id/mBoundary"
-        android:layout_width="44dp"
-        android:layout_height="22dp" />
+    <TextView
+        android:id="@+id/mIndexText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/mIndexView"
+        app:layout_constraintEnd_toEndOf="@id/mIndexView"
+        app:layout_constraintStart_toStartOf="@id/mIndexView"
+        app:layout_constraintTop_toTopOf="@id/mIndexView" />
 
     <com.gongziyi.demon.shadowTest.ShadowAngleConstraintLayout
         android:id="@+id/mCardLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@android:color/white"
         app:mRadius="4dp" />
 
     <TextView
@@ -66,14 +90,13 @@
     <ImageView
         android:id="@+id/mImageView"
         android:layout_width="156dp"
-        android:layout_height="156dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="156dp" />
 
     <TextView
         android:id="@+id/mImageTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/color_a123"
+        android:background="@drawable/res_gallery_title_text_bg"
         android:paddingStart="8dp"
         android:paddingTop="6dp"
         android:paddingEnd="8dp"

@@ -21,7 +21,9 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
     /**当前总宽度,动态计算产生*/
     private var mTotalWidth: Int = 0
     /**当前滑动位置,动态计算产生*/
-    private var mScrollOffset: Int = 0
+    private var scrollOffset: Int = 0
+    /**上一次itemCount*/
+    private var lastItemSize = 0
     /**矩阵集合*/
     private val allRects: SparseArray<Rect> = SparseArray<Rect>()
     /**视图进度变化 progress变化曲线 0f->1f->0f*/
@@ -29,14 +31,14 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
 
     /**开始位置*/
     var startPadding = 0
-    /**平滑区 意为此区域所产生的进度值均为 1f */
+    /**平滑区 意为此区域所产生的进度值均为 1f 并且在总长的首尾格增加对应长度的拖拽区域 */
     var smoothRegion = 0
-    /**进度区 包含平滑区,当小于平滑区时,无视平滑区的值*/
+    /**进度区 包含平滑区,当小于平滑区时,无视平滑区的值 2dp*/
     var progressRegion = 0
-    /**膨胀补偿 防止扩大时遮挡下一个视图*/
-    var expandOffset = 0
-    /**放大倍数*/
-    var magnification = 0f
+    /**膨胀补偿 防止扩大时遮挡下一个视图 dp*/
+    var paddingOffset = 0
+    /**展开大小dp*/
+    var openSize = 0
 
     override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
         return RecyclerView.LayoutParams(
@@ -54,21 +56,21 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
 
     //计算子View大小及
     private fun calculateChildrenSize(recycler: RecyclerView.Recycler?) {
-        val smooth = smoothRegion
-        mTotalWidth = startPadding + smooth
-        mScrollOffset = smooth
+        val region = smoothRegion
+        mTotalWidth = startPadding + region
         for (i in 0 until itemCount) {
             val v = recycler!!.getViewForPosition(i)
             addView(v)
             measureChildWithMargins(v, 0, 0)
-            calculateItemDecorationsForChild(v, Rect())
+            val rect = Rect()
+            calculateItemDecorationsForChild(v, rect)
             val childWidth = getDecoratedMeasuredWidth(v)
             val childHeight = getDecoratedMeasuredHeight(v)
             var childRect: Rect? = allRects.get(i)
             if (null == childRect) {
                 childRect = Rect()
             }
-            childRect!!.set(
+            childRect.set(
                 mTotalWidth,
                 (height - childHeight) shr 1,
                 mTotalWidth + childWidth,
@@ -77,55 +79,58 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
             mTotalWidth += childWidth
             allRects.put(i, childRect)
             if (i == itemCount - 1) {
-                val filling = width - startPadding - childWidth
-                mTotalWidth += filling
+                mTotalWidth += (width - startPadding - childWidth)
             }
         }
-        mTotalWidth += smooth
+        mTotalWidth += region
+        //在数据个数发生变化或者当前滑动位置超过重宽度时重置滑动位置
+        if (scrollOffset > mTotalWidth - width || lastItemSize != itemCount) {
+            scrollOffset = region
+        }
+        lastItemSize = itemCount
     }
 
 
     override fun scrollHorizontallyBy(px: Int, recycler: RecyclerView.Recycler?, state: RecyclerView.State?): Int {
         var dx = px
-        if (mScrollOffset + dx < 0) {
-            dx = -mScrollOffset
-        } else if (mScrollOffset + dx > mTotalWidth - width) {
-            dx = mTotalWidth - width - mScrollOffset
+        if (scrollOffset + dx < 0) {
+            dx = -scrollOffset
+        } else if (scrollOffset + dx > mTotalWidth - width) {
+            dx = mTotalWidth - width - scrollOffset
         }
-        offsetChildrenHorizontal(-dx)
         recyclerAndFillView(recycler, state)
-        mScrollOffset += dx
+        offsetChildrenHorizontal(-dx)
+        scrollOffset += dx
         return dx
     }
 
 
     private fun recyclerAndFillView(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         if (itemCount == 0 || state!!.isPreLayout) return
-        val w = width + startPadding
+        val w = width
         val h = height
         detachAndScrapAttachedViews(recycler!!)
-        val displayRect = Rect(mScrollOffset, 0, mScrollOffset + w, h)
+        val displayRect = Rect(scrollOffset, 0, scrollOffset + w, h)
         for (i in 0 until itemCount) {
             val rect = allRects.get(i)
             val view = recycler.getViewForPosition(i)
-            if (Rect.intersects(displayRect, rect)  ) {
-                fillView(view, rect, mScrollOffset)
+            if (Rect.intersects(displayRect, rect)) {
+                fillView(view, rect)
             } else {
                 removeAndRecycleView(view, recycler)
             }
         }
     }
 
-    private fun fillView(view: View, rect: Rect, scrollOffset: Int) {
-        //基于startPadding获得开始点.
+    private fun fillView(view: View, rect: Rect) {
+        //基于00点获得开始点.
         val startPos = rect.left - startPadding - scrollOffset
-        val startAbsPos = abs(startPos).toFloat()
-        val progress = getProgress(startAbsPos)
-        val offset = getOffsetPadding(progress, startPos >= 0)
-        measureChildWithMargins(view, 0, 0)
+        val progress = getProgress(abs(startPos).toFloat())
+        val offset = if (startPos > 0) ((1 - progress) * paddingOffset).toInt() else 0
         addView(view)
+        measureChildWithMargins(view, 0, 0)
         //基于开始点的正数
-        val scale = (rect.width() * magnification * progress).toInt()
+        val scale = (openSize * progress).toInt()
         onViewChange(view, progress)
         layoutDecorated(
             view,
@@ -136,12 +141,6 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
         )
     }
 
-    /**计算膨胀偏移*/
-    private fun getOffsetPadding(progress: Float, isPNumber: Boolean): Int {
-        val value = if (isPNumber) (1 - progress) else 0f
-        return (expandOffset * value).toInt()
-
-    }
 
     /**计算进度值*/
     private fun getProgress(startPos: Float): Float {
@@ -180,7 +179,7 @@ class GalleryLayoutManager : RecyclerView.LayoutManager() {
 
     override fun getDecoratedLeft(child: View): Int {
         val position = getPosition(child)
-        return allRects.get(position).left - mScrollOffset
+        return allRects.get(position).left - scrollOffset
     }
 
     fun setOnViewByProgressChange(fun0: (view: View, progress: Float) -> Unit) {

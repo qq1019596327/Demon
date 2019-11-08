@@ -35,6 +35,14 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="ResourceGalleryView">
+        <attr name="mStartPadding" format="dimension" />
+        <attr name="mProgressRegion" format="dimension" />
+        <attr name="mSmoothRegion" format="dimension" />
+        <attr name="mPaddingOffset" format="dimension" />
+        <attr name="mMagnification" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="CardSlider">
         <!-- Active card offset from start of RecyclerView. Default value is 50dp. -->
         <attr name="activeCardLeftOffset" format="dimension"/>

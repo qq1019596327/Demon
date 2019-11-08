@@ -5,53 +5,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <View
-            android:id="@+id/mStartPadding"
-            android:layout_width="100px"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/color_3c8"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-        <View
-            android:id="@+id/mProgressRegion"
-            android:layout_width="200px"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/color_08f"
-            app:layout_constraintTop_toBottomOf="@id/mStartPadding"
-            app:layout_constraintStart_toEndOf="@id/mStartPadding"
-            app:layout_constraintEnd_toEndOf="@id/mStartPadding"
-            />
-        <View
-            android:id="@+id/mSmoothRegion"
-            android:layout_width="100px"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/color_f78"
-            app:layout_constraintTop_toBottomOf="@id/mProgressRegion"
-            app:layout_constraintStart_toEndOf="@id/mStartPadding"
-            app:layout_constraintEnd_toEndOf="@id/mStartPadding"
-            />
-        <View
-            android:id="@+id/mPaddingOffset"
-            android:layout_width="100px"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/color_fe2"
-            app:layout_constraintTop_toBottomOf="@id/mSmoothRegion"
-            app:layout_constraintStart_toEndOf="@id/mProgressRegion"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <com.gongziyi.demon.gallery.view.ResourceGalleryView
         android:id="@+id/mRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="280dp" />
+        android:layout_height="282dp"
+        app:mMagnification="231dp"
+        app:mPaddingOffset="59dp"
+        app:mProgressRegion="125dp"
+        app:mSmoothRegion="15dp"
+        app:mStartPadding="6dp" />
 
     <Button
         android:onClick="setNewDataArray"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:text="生成随机数据源"
+        />
 </LinearLayout>

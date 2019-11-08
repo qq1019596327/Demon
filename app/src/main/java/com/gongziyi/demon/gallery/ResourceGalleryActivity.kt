@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.ViewCompat
 import com.gongziyi.demon.R
-import com.gongziyi.demon.gallery.adpater.GallerySnapHelper
 import com.gongziyi.demon.gallery.adpater.GalleryAdapter
-import com.gongziyi.demon.gallery.adpater.GalleryLayoutManager
 import com.gongziyi.demon.gallery.view.IGalleryScrollChangeListener
 import com.gongziyi.demon.shadowTest.ShadowAngleConstraintLayout
 import kotlinx.android.synthetic.main.activity_resource_gallery.*
@@ -22,45 +20,31 @@ import kotlinx.android.synthetic.main.activity_resource_gallery.*
  */
 class ResourceGalleryActivity : AppCompatActivity(), IGalleryScrollChangeListener {
 
-    var startPadding = 100
-    var progressRegion = 200
-    var smoothRegion = 50
-    var paddingOffset = 200
-    var magnification = 0.8f
+
     private val mAdapter: GalleryAdapter by lazy {
         GalleryAdapter()
     }
     private val photos by lazy {
         arrayListOf<String>().apply {
-            add("https://i1.zhiaigou.com/uploads/tu/201910/10372/7f29cd1f31_33.jpg")
-            add("https://i1.zhiaigou.com/uploads/tu/201910/10273/440a1897c3_33.jpg")
-            add("https://i1.zhiaigou.com/uploads/tu/201910/10078/8a2e508c69_22.jpg")
-            add("https://i1.zhiaigou.com/uploads/tu/201909/10295/9fc5ff6217_33.jpg")
-            add("https://i1.zhiaigou.com/uploads/tu/201903/10105/z6c9a9x.jpg")
-            add("https://i1.zhiaigou.com/uploads/tu/201808/100/888.jpg")
-            add("https://i1.zhiaigou.com/uploads/tu/201903/10194/v8a98z89a.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554230&di=4b61b741d23c4739d5b1b53c0c1f59c5&imgtype=0&src=http%3A%2F%2Ffile5.youboy.com%2Fd%2F173%2F67%2F79%2F1%2F146621.jpg")
+             add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=576397792,761328300&fm=26&gp=0.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554230&di=a97cdf836a39443163a5b6b0a3a36c8e&imgtype=0&src=http%3A%2F%2Fwww.ph-fc.com%2Fd%2Ffile%2Fnewhouse%2F2015%2F07%2F55934ad910cff.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554230&di=7e7184666349af6f24f2ddfb9efcc2c5&imgtype=0&src=http%3A%2F%2Fphoto.16pic.com%2F00%2F52%2F49%2F16pic_5249823_b.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554229&di=b9f037d353be2e646f60f7b6619a7449&imgtype=0&src=http%3A%2F%2Fwww.ph-fc.com%2Fd%2Ffile%2Fnewhouse%2F2014%2F10%2F544090684136e.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554229&di=7a7441227ef491a208120ff8c3eef172&imgtype=0&src=http%3A%2F%2Fimage4.cnpp.cn%2Fupload%2Fimages%2F20180118%2F16525869504_840x600.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554229&di=12458d8f3f68571a01028b235cb26e66&imgtype=0&src=http%3A%2F%2Fpic5.nipic.com%2F20100123%2F2572038_214956013573_2.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554229&di=9dc49ba92ca5928aa42b401704d74f47&imgtype=0&src=http%3A%2F%2Fimg3.guilinlife.com%2Fhouse%2FImages%2Fimage%2F201412%2F20141230104732_80884.jpg")
+             add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573195554229&di=0575766c03da3569b0f8d3c338f370ea&imgtype=0&src=http%3A%2F%2Fwww.dllp.cn%2FFileUpload%2FPremises%2F20140811%2F8e4e71e2-3ab2-49e1-9e61-fa814b817cab.jpg")
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resource_gallery)
-//        val width =  resources.displayMetrics.widthPixels/2
-//        progressRegion=width
-//        startPadding=width
-        mStartPadding.layoutParams.width = startPadding
-        mProgressRegion.layoutParams.width = progressRegion * 2
-        mSmoothRegion.layoutParams.width = smoothRegion * 2
-        mPaddingOffset.layoutParams.width = paddingOffset
-
         mRecyclerView.let {
             mAdapter.setOnItemChildClickListener { _, _, position -> it.onActiveCardChange(position) }
-            it.setStartPadding(startPadding)
-            it.setProgressRegion(progressRegion)
-            it.setSmoothRegion(smoothRegion)
-            it.setPaddingOffset(paddingOffset)
-            it.setMagnification(magnification)
             it.adapter = mAdapter
+
             it.addOnScrollChangeListener(this)
         }
     }
@@ -78,7 +62,7 @@ class ResourceGalleryActivity : AppCompatActivity(), IGalleryScrollChangeListene
         if (view is MotionLayout) {
             view.progress = progress
             val layout = view.findViewById<ShadowAngleConstraintLayout>(R.id.mCardLayout)
-            layout.setShadow(30 * progress, 1f)
+            layout.setShadow(15 * progress, 1f)
             view.setZ(R.id.mCardLayout, progress)
             view.setZ(R.id.mDownHintText, progress)
             view.setZ(R.id.mUpHintText, progress)
@@ -90,11 +74,12 @@ class ResourceGalleryActivity : AppCompatActivity(), IGalleryScrollChangeListene
     }
 
     override fun onScrollIdleListener(activePosition: Int) {
+
         Log.i("==============", "activePosition=$activePosition")
     }
 
     private fun View.setZ(idInt: Int, progress: Float) {
-        ViewCompat.setZ(findViewById(idInt), 50 * progress + 1)
+        ViewCompat.setZ(findViewById(idInt), 15 * progress + 1)
     }
 
 }
