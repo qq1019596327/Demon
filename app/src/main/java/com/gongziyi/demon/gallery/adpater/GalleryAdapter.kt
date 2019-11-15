@@ -14,7 +14,7 @@ import com.gongziyi.demon.R
  */
 class GalleryAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_gallery_layout) {
     private val options by lazy {
-        RequestOptions.bitmapTransform(GlideRoundTransform(mContext, 4))
+        RequestOptions.bitmapTransform(GlideRoundTransform(mContext))
     }
 
     override fun convert(helper: BaseViewHolder, item: String?) {

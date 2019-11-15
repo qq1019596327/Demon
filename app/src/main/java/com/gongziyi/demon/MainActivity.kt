@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gongziyi.demon.arouter.ARouterActivity
 import com.gongziyi.demon.chart.MChartActivity
 import com.gongziyi.demon.constraintDemon.ConstraintLayoutActivity
+import com.gongziyi.demon.coordinator.CoordinatorLayoutActivity
 import com.gongziyi.demon.flexBox.FlexBoxActivity
 import com.gongziyi.demon.gallery.ResourceGalleryActivity
 import com.gongziyi.demon.gyroscope.GyroscopeActivity
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             , "报表示例" to MChartActivity::class.java
             , "阴影测试" to ShadowTestActivity::class.java
             , "资源画廊" to ResourceGalleryActivity::class.java
+            , "CoordinatorLayout使用" to CoordinatorLayoutActivity::class.java
         )
     }
 

@@ -5,35 +5,35 @@
     <color name="res_colorAccent">#D81B60</color>
 
 
-    <color name="color_3aa">#3AA0FF</color>
-    <color name="color_fac">#FACC13</color>
-    <color name="color_28e">#28E0C8</color>
-    <color name="color_fb7">#FB7293</color>
+    <color name="color_3aa">#3aa0ff</color>
+    <color name="color_fac">#facc13</color>
+    <color name="color_28e">#28e0c8</color>
+    <color name="color_fb7">#fb7293</color>
 
 
-    <color name="color_08f">#0081FF</color>
-    <color name="color_3c8">#3AC28C</color>
-    <color name="color_fa6">#FFA969</color>
-    <color name="color_caf">#C4A7FA</color>
-    <color name="color_f78">#FD7E87</color>
-    <color name="color_fe2">#F0E32B</color>
-    <color name="color_5ec">#50E3C2</color>
-    <color name="color_88f">#8983F2</color>
-    <color name="color_123">#1C2D3B</color>
-    <color name="color_446">#474F66</color>
+    <color name="color_08f">#0081ff</color>
+    <color name="color_3c8">#3ac28c</color>
+    <color name="color_fa6">#ffa969</color>
+    <color name="color_caf">#c4a7fa</color>
+    <color name="color_f78">#fd7e87</color>
+    <color name="color_fe2">#f0e32b</color>
+    <color name="color_5ec">#50e3c2</color>
+    <color name="color_88f">#8983f2</color>
+    <color name="color_123">#1c2d3b</color>
+    <color name="color_446">#474f66</color>
 
 
 
-    <color name="color_a08f">#4D0081FF</color>
-    <color name="color_a3c8">#4D3AC28C</color>
-    <color name="color_afa6">#4DFFA969</color>
-    <color name="color_acaf">#4DC4A7FA</color>
-    <color name="color_af78">#4DFD7E87</color>
-    <color name="color_afe2">#4DF0E32B</color>
-    <color name="color_a5ec">#4D50E3C2</color>
-    <color name="color_a88f">#4D8983F2</color>
-    <color name="color_a123">#4D1C2D3B</color>
-    <color name="color_a446">#66474F66</color>
+    <color name="color_a08f">#4d0081ff</color>
+    <color name="color_a3c8">#4d3ac28c</color>
+    <color name="color_afa6">#4dffa969</color>
+    <color name="color_acaf">#4dc4a7fa</color>
+    <color name="color_af78">#4dfd7e87</color>
+    <color name="color_afe2">#4df0e32b</color>
+    <color name="color_a5ec">#4d50e3c2</color>
+    <color name="color_a88f">#4d8983f2</color>
+    <color name="color_a123">#4d1c2d3b</color>
+    <color name="color_a446">#66474f66</color>
 
 
 </resources>
