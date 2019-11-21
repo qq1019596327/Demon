@@ -14,6 +14,7 @@ import com.gongziyi.demon.gallery.ResourceGalleryActivity
 import com.gongziyi.demon.gyroscope.GyroscopeActivity
 import com.gongziyi.demon.menuPopup.MenuPopupActivity
 import com.gongziyi.demon.shadowTest.ShadowTestActivity
+import com.gongziyi.demon.stickyDots.StickyDotsActivity
 import com.gongziyi.demon.twoLevelHeader.TwoLevelHeaderActivity
 import kotlinx.android.synthetic.main.res_activity_main.*
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             , "阴影测试" to ShadowTestActivity::class.java
             , "资源画廊" to ResourceGalleryActivity::class.java
             , "CoordinatorLayout使用" to CoordinatorLayoutActivity::class.java
+            , "小红点" to StickyDotsActivity::class.java
         )
     }
 

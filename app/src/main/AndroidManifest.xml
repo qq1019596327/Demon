@@ -26,6 +26,7 @@
         <activity android:name=".gyroscope.GyroscopeActivity" />
         <activity android:name=".gallery.ResourceGalleryActivity" />
         <activity android:name=".coordinator.CoordinatorLayoutActivity" />
+        <activity android:name=".stickyDots.StickyDotsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
